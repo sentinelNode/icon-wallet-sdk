@@ -1,1 +1,6 @@
-console.log("Project is running successfully");
+class IconWallet {
+  async connect() {}
+  async getWalletAddress() {}
+  async signTransaction() {}
+  async sendTransaction() {}
+}
