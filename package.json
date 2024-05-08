@@ -35,5 +35,8 @@
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.4.5",
     "typescript-transform-paths": "^3.4.7"
+  },
+  "dependencies": {
+    "bignumber.js": "^9.1.2"
   }
 }
