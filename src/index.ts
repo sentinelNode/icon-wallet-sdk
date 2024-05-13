@@ -52,7 +52,7 @@ export class IconWallet {
   }
 
   /**
-   * Request for signing transaction hash.
+   * Request for signing 32 bytes long ICON transaction hash.
    * If the wallet is locked, it prompts user to unlock wallet
    * @param txHash txHash to sign
    * @returns `string` signature
@@ -65,7 +65,7 @@ export class IconWallet {
   }
 
   /**
-   * Requests for calling standard ICON JSON-RPC API
+   * Request for calling standard ICON JSON-RPC API
    * @param txObj transaction object usually built with `IconBuilder` class from `icon-sdk-js`
    * @returns `JSON_RPC_RESPONSE`
    */
