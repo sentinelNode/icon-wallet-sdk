@@ -30,7 +30,7 @@ async function sendTransaction() {
     from: 'hx254314b22930366cf1d97b3eb419b481e2986003', // source wallet
     nid: '0x1',
     version: '0x3',
-    timestamp: Date.now(),
+    timestamp: Date.now() * 1000,
     stepLimit: '0x3d0900',
     value: '0x16345785d8a0000',
   };
