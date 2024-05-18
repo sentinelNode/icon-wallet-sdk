@@ -2,7 +2,11 @@ import BigNumber from 'bignumber.js';
 
 export interface JSON_RPC_RESPONSE {
   jsonrpc: number;
-  result: string;
+  result?: string;
+  error?: {
+    code: number;
+    message: string;
+  };
   id: number;
 }
 
@@ -17,8 +21,8 @@ export interface IcxTransaction {
   nonce: Hash;
   version: Hash;
   timestamp: Hash;
-  data: string;
-  dataType: any;
+  data?: string;
+  dataType?: any;
 }
 
 export interface DepositTransaction extends IcxTransaction {

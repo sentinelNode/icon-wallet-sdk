@@ -1,6 +1,11 @@
 import { RawTransaction, Hash } from '@/types/transaction.types';
 import BigNumber from 'bignumber.js';
 
+export function isValidTxHash(txHash: string) {
+  const regex = /^0x[a-fA-F0-9]{64}$/;
+  return regex.test(txHash);
+}
+
 export function toHexNumber(value: Hash): string {
   const valueBN = BigNumber.isBigNumber(value) ? value : new BigNumber(value);
   const valueHex = valueBN.toString(16);

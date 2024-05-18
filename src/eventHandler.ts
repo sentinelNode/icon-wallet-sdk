@@ -19,22 +19,40 @@ export class IconEventHandler {
 
   static getEventResponse(
     eventName: ICON_REQUEST_EVENTS,
+    timeoutMs?: number,
     txId?: number,
   ): Promise<boolean | string | JSON_RPC_RESPONSE> {
+    const expectedResponseEvent: ICON_RESPONSE_EVENTS = EVENT_RESPONSE[eventName];
+
     return new Promise((resolve, reject) => {
-      window.addEventListener(EVENT_RESPONSE[eventName], ev => {
+      if (timeoutMs) {
+        setTimeout(() => {
+          reject(`Request Timed out for ${eventName}`);
+        }, timeoutMs);
+      }
+
+      window.addEventListener('ICONEX_RELAY_RESPONSE', ev => {
         const { detail } = ev as CustomEvent;
+        const eventOfInterest = detail.type == expectedResponseEvent;
 
         switch (detail.type) {
           case ICON_RESPONSE_EVENTS.RESPONSE_HAS_ACCOUNT:
-            resolve(detail.payload.hasAccount as boolean);
+            eventOfInterest && resolve(detail.payload.hasAccount as boolean);
+            break;
 
           case ICON_RESPONSE_EVENTS.RESPONSE_HAS_ADDRESS:
-            resolve(detail.payload.hasAddress as boolean);
+            eventOfInterest && resolve(detail.payload.hasAddress as boolean);
+            break;
 
           case ICON_RESPONSE_EVENTS.RESPONSE_ADDRESS:
           case ICON_RESPONSE_EVENTS.RESPONSE_SIGNING:
-            resolve(detail.payload as string);
+            eventOfInterest && resolve(detail.payload as string);
+            break;
+
+          case ICON_RESPONSE_EVENTS['CANCEL_SIGNING']:
+            // todo: transaction id should be received
+            eventName == ICON_REQUEST_EVENTS.REQUEST_SIGNING && reject('User cancelled signing');
+            break;
 
           case ICON_RESPONSE_EVENTS['RESPONSE_JSON-RPC']:
             const responseData = detail.payload as JSON_RPC_RESPONSE;
@@ -45,8 +63,11 @@ export class IconEventHandler {
             break;
 
           case ICON_RESPONSE_EVENTS['CANCEL_JSON-RPC']:
-            // todo: transaction id should be received here from wallet
-            reject('User cancelled transaction');
+            // todo: transaction id should be received
+            eventName == ICON_REQUEST_EVENTS['REQUEST_JSON-RPC'] &&
+              reject('User cancelled transaction');
+            break;
+
           default:
             reject(`Unknown ICON_RESPONSE_EVENT ${detail?.type}`);
         }
