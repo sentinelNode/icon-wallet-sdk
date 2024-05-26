@@ -1,13 +1,16 @@
 {
   "name": "icon-wallet-sdk",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "ICON Wallet SDK for events wrapping. With the development of this SDK, event listener management will be done by the SDK and user can interact with wallets using regular async/await approach in Javascript.",
   "main": "dist/icon_wallet_sdk.bundle.js",
   "types": "dist/esm/types/index.d.ts",
+  "repository": {
+    "url": "https://github.com/sentinelNode/icon-wallet-sdk"
+  },
   "scripts": {
     "start": "ts-node src/main.ts",
-    "publish": "npm run build && npm publish",
     "build": "webpack --config webpack.prod.cjs",
+    "publish:npm": "npm run build && npm publish",
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
     "lint:fix": "eslint \"src/**/*.{js,jsx,ts,tsx}\" --fix",
