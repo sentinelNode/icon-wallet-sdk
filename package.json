@@ -2,9 +2,11 @@
   "name": "icon-wallet-sdk",
   "version": "0.0.1",
   "description": "ICON Wallet SDK for events wrapping. With the development of this SDK, event listener management will be done by the SDK and user can interact with wallets using regular async/await approach in Javascript.",
-  "main": "src/main.ts",
+  "main": "dist/icon_wallet_sdk.bundle.js",
+  "types": "dist/esm/types/index.d.ts",
   "scripts": {
     "start": "ts-node src/main.ts",
+    "prepare": "webpack --config webpack.prod.cjs",
     "build": "webpack --config webpack.prod.cjs",
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
@@ -12,6 +14,7 @@
     "test": "webpack && serve -s tests/"
   },
   "keywords": [
+    "icon wallet sdk",
     "icon",
     "icon wallet",
     "wallet sdk"
@@ -36,6 +39,7 @@
     "ts-loader": "^9.5.1",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
+    "tslib": "^2.6.2",
     "typescript": "^5.4.5",
     "typescript-transform-paths": "^3.4.7",
     "webpack": "^5.91.0",

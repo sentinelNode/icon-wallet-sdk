@@ -4,14 +4,19 @@
     "require": ["typescript-transform-paths/register", "tsconfig-paths/register"]
   },
   "compilerOptions": {
+    "module": "ESNext",
     "target": "ES2020",
-    "module": "CommonJS",
     "baseUrl": "./",
     "paths": {
       "@/*": ["src/*"]
     },
-    "resolveJsonModule": true,
     "outDir": "./dist",
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "declarationDir": "./dist/esm/types",
+    "moduleResolution": "node",
+    "importHelpers": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,

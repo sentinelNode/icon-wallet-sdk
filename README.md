@@ -12,6 +12,16 @@ This repo serves as the source code for ICON Wallet SDK and changes the wallet i
 
 Please fork off the `dev` branch, pull the latest commits and send PR to the `dev` branch as well.
 
+# Running Tests
+
+1. Build the project
+
+   ```sh
+   $ npm i && npm run build
+   ```
+
+2. Open `tests/index.html` on your browser
+
 # License
 
 This project is available under the Apache License, Version 2.0.
