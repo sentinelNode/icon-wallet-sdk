@@ -1,8 +1,16 @@
 # SDK Specification
 
+```sh
+$ npm install icon-wallet-sdk
+```
+
 ## IconWallet
 
 A utility class which provides utility methods to interact with ICON wallets ([Hana](https://hanawallet.io/) and [ICONex](https://chromewebstore.google.com/detail/iconex/flpiciilemghbmfalicajoolhkkenfel?hl=en)).
+
+```javascript
+import { IconWallet } from 'icon-wallet-sdk';
+```
 
 ### connect()
 
