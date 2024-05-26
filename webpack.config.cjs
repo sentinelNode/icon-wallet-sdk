@@ -14,14 +14,16 @@ module.exports = {
   output: {
     filename: `${LIB_NAME}.bundle.js`,
     path: path.resolve(paths.dist),
-    library: LIB_NAME,
-    libraryTarget: 'umd',
-    // umdNamedDefine: true,
+    libraryTarget: 'module',
+    umdNamedDefine: true,
     globalObject: 'this',
   },
   resolve: {
     extensions: ['.ts', '.js'],
     alias: { '@': paths.src },
+  },
+  experiments: {
+    outputModule: true,
   },
   module: {
     rules: [
@@ -32,5 +34,6 @@ module.exports = {
       },
     ],
   },
+  target: 'web',
   mode: 'development',
 };
