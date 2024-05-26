@@ -6,7 +6,7 @@
   "types": "dist/esm/types/index.d.ts",
   "scripts": {
     "start": "ts-node src/main.ts",
-    "prepare": "webpack --config webpack.prod.cjs",
+    "publish": "npm run build && npm publish",
     "build": "webpack --config webpack.prod.cjs",
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",

@@ -1,6 +1,9 @@
+.vscode/
+node_modules/
 tests/
 .prettierrc.json
 tsconfig.json
 webpack.*
 .eslintrc.json
 global.d.ts
+src/
