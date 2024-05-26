@@ -14,13 +14,9 @@ Please fork off the `dev` branch, pull the latest commits and send PR to the `de
 
 # Running Tests
 
-1. Build the project
-
    ```sh
-   $ npm i && npm run build
+   $ npm run test
    ```
-
-2. Open `tests/index.html` on your browser
 
 # License
 
