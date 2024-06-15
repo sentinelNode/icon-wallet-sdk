@@ -50,7 +50,6 @@ export class IconEventHandler {
             break;
 
           case ICON_RESPONSE_EVENTS['CANCEL_SIGNING']:
-            // todo: transaction id should be received
             eventName == ICON_REQUEST_EVENTS.REQUEST_SIGNING && reject('User cancelled signing');
             break;
 
@@ -63,9 +62,12 @@ export class IconEventHandler {
             break;
 
           case ICON_RESPONSE_EVENTS['CANCEL_JSON-RPC']:
-            // todo: transaction id should be received
-            eventName == ICON_REQUEST_EVENTS['REQUEST_JSON-RPC'] &&
+            if (
+              eventName == ICON_REQUEST_EVENTS['REQUEST_JSON-RPC'] &&
+              detail.payload?.id == txId
+            ) {
               reject('User cancelled transaction');
+            }
             break;
 
           default:
